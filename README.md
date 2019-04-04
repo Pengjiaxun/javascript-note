@@ -1,5 +1,5 @@
 
-# 我的JavaScript学习笔记
+# JavaScript学习笔记
 
 **JavaScript基础**
 * [词法结构](JavaScript基础/词法结构.md)
