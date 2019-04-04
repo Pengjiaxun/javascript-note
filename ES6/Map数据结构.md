@@ -9,9 +9,10 @@ const map = new Map([
   ['name', '张三'],
   ['title', 'Author']
 ]);
+```
 
-
-// Map构造函数接受数组作为参数，实际上执行的是下面的算法
+Map构造函数接受数组作为参数，实际上执行的是下面的算法
+```
 const items = [
   ['name', '张三'],
   ['title', 'Author']
