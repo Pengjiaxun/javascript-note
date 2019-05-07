@@ -48,3 +48,13 @@ hard/soft/mixed区别
 4.删除文件
 
 在本地删除文件后，使用`git rm <file>`命令并`git commit`，版本库的文件会同步删除。
+
+### bug处理
+
+当开发中遇到需要紧急修复的bug，但是当前开发工作只进行到一半而无法提交代码，此时可以使用`git stash`命令把当前的修改内容存起来，待bug修复后再还原。
+
+查看stash记录：`git stash list`
+
+还原并删除记录：`git stash pop`
+
+还原不删除记录：`git stash apply`
