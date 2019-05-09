@@ -48,9 +48,16 @@ hard/soft/mixed区别
 
 `git revert`：新增一个提交来回到之前的某个版本
 
+**恢复撤销的代码**
+
+只要通过`git reflog`找到想要回退的commit id，执行`git reset --hard <目标版本号>`即可。
+
+
 **删除文件**
 
-在本地删除文件后，使用`git rm <file>`命令并`git commit`，版本库的文件会同步删除。
+在本地删除文件后：
+1. 如果确实要从版本库中删除此文件，那就使用`git rm <file>`命令并`git commit`，版本库的文件会同步删除；
+2. 如果是误删的话，此时版本库里面仍然有该文件，可以通过`git checkout -- <file>`恢复。
 
 ### bug处理
 
