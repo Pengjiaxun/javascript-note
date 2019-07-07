@@ -18,39 +18,32 @@
 
 **文件提交流程**
 
-工作区file —> `git add` —> 暂存区file —> `git commit` —> 版本库file —> `git push` —> 同步到远程仓库
+```flow
 
+st=>start: 工作区(本地)
+e=>end: 远程仓库
+op1=>operation: git add
+after_add=>inputoutput: 暂存区
+op2=>operation: git commit
+after_commit=>inputoutput: 本地版本库
+op3=>operation: git push
 
-**撤销工作区的修改**
+st->op1->after_add->op2->after_commit->op3->e
+```
+<br/>
 
-`git checkout -- <file>`
+**撤销修改**
 
-包含两种情况：
-   1. 一种是file自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
-   2. 一种是file已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
+撤销位置|命令|说明
+:------:|:--:|:--
+工作区  |git checkout -- <file>|1. file修改后还没有被放到暂存区，撤销修改就回到和版本库一模一样的状态；<br/>2. file已经添加到暂存区后，又作了修改，撤销修改就回到添加到暂存区后的状态。
+暂存区  |git reset --hard/soft/mixed <版本号>|hard：代码修改内容全部丢弃<br/>soft：回到commit之前，add之后<br/>mixed：等于git reset HEAD <file>，回到add之前<br/><br/>**注意：使用此命令后，因为本地版本比远程仓库版本要老，所以不能使用git push，要使用git push -f强制推送更新。**
 
-**撤销掉暂存区的修改**
-
-`git reset HEAD <file>`
-
-撤销后暂存区是干净的，工作区是有修改的。
-
-**撤销提交的修改**
-
-`git reset --hard/soft/mixed <目标版本号>`
-
-使用此命令后，因为版本版本比远程仓库版本要老，所以不能使用`git push`，使用`git push -f`强制推送更新。
-
-hard/soft/mixed区别
-- hard：代码修改内容全部丢弃
-- soft：回到commit之前，add之后
-- mixed：等于`git reset HEAD <file>`，回到add之前
-
-`git revert`：新增一个提交来回到之前的某个版本
+`git revert <版本号>`：新增一个提交来回到之前的某个版本
 
 **恢复撤销的代码**
 
-只要通过`git reflog`找到想要回退的commit id，执行`git reset --hard <目标版本号>`即可。
+只要通过`git reflog`找到想要回退的commit id，执行`git reset --hard <版本号>`即可。
 
 
 **删除文件**
