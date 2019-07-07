@@ -36,7 +36,7 @@ st->op1->after_add->op2->after_commit->op3->e
 
 撤销位置|命令|说明
 :------:|:--:|:--
-工作区  |git checkout -- <file>|1. file修改后还没有被放到暂存区，撤销修改就回到和版本库一模一样的状态；<br/>2. file已经添加到暂存区后，又作了修改，撤销修改就回到添加到暂存区后的状态。
+工作区  |git checkout -- <文件>|1. file修改后还没有被放到暂存区，撤销修改就回到和版本库一模一样的状态；<br/>2. file已经添加到暂存区后，又作了修改，撤销修改就回到添加到暂存区后的状态。
 暂存区  |git reset --hard/soft/mixed <版本号>|hard：代码修改内容全部丢弃<br/>soft：回到commit之前，add之后<br/>mixed：等于git reset HEAD <file>，回到add之前<br/><br/>**注意：使用此命令后，因为本地版本比远程仓库版本要老，所以不能使用git push，要使用git push -f强制推送更新。**
 
 `git revert <版本号>`：新增一个提交来回到之前的某个版本
