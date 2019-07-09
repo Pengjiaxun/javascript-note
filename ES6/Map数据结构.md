@@ -35,16 +35,16 @@ map.get(['a']) // undefined
 
 ### 属性和操作方法
 
-- size：返回成员总数
-- set(key, value)：设置键名key对应的键值为value，然后返回整个 Map 结构。如果key已经有值，则键值会被更新，否则就新生成该键。
-- get(key)：读取key对应的键值，如果找不到key，返回undefined。
-- has(key)：某个键是否在当前 Map 对象之中。
-- delete(key)：删除某个键，返回true。如果删除失败，返回false。
-- clear()：清除所有成员，没有返回值。
+- `size`：返回成员总数
+- `set(key, value)`：设置键名key对应的键值为value，然后返回整个 Map 结构。如果key已经有值，则键值会被更新，否则就新生成该键。
+- `get(key)`：读取key对应的键值，如果找不到key，返回undefined。
+- `has(key)`：某个键是否在当前 Map 对象之中。
+- `delete(key)`：删除某个键，返回true。如果删除失败，返回false。
+- `clear()`：清除所有成员，没有返回值。
 
 ### 遍历方法
 
-- keys()：返回键名的遍历器。
-- values()：返回键值的遍历器。
-- entries()：返回所有成员的遍历器。
-- forEach()：遍历 Map 的所有成员。
+- `keys()`：返回键名的遍历器。
+- `values()`：返回键值的遍历器。
+- `entries()`：返回所有成员的遍历器。
+- `forEach()`：遍历 Map 的所有成员。
