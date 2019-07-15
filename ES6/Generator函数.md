@@ -54,6 +54,52 @@ g.next() // { value: 1, done: false }
 g.next(true) // { value: 0, done: false }
 ```
 
+### for...of循环与Generator
+
+for...of循环可以自动遍历Generator函数运行时生成的Iterator对象，且此时不再需要调用next方法。
+
+```
+function* foo() {
+  yield 1;
+  yield 2;
+  yield 3;
+  yield 4;
+  yield 5;
+  return 6; // 执行到这里的时候done为true
+}
+
+for (let v of foo()) {
+  console.log(v);
+}
+// 1 2 3 4 5
+```
+
+### throw()
+
+Generator函数返回的遍历器对象，都有一个throw方法，可以在函数体外抛出错误，然后在updateGeneratorupdate函数体内捕获。
+
+```
+var g = function* () {
+  try {
+    yield;
+  } catch (e) {
+    console.log('内部捕获', e);
+  }
+};
+
+var i = g();
+i.next();
+
+try {
+  i.throw('a');
+  i.throw('b');
+} catch (e) {
+  console.log('外部捕获', e);
+}
+// 内部捕获 a
+// 外部捕获 b
+```
+
 ### return()
 
 `Generator`的`return`方法，可以返回给定的值，并且终结遍历Generator函数。
@@ -73,3 +119,41 @@ g.next()        // { value: undefined, done: true }
 ```
 
 ### 应用
+
+**异步操作的同步化表达**
+
+```
+function* loadUI() {
+  showLoadingScreen();
+  yield loadUIDataAsynchronously();
+  hideLoadingScreen();
+}
+var loader = loadUI();
+// 加载UI
+loader.next()
+
+// 卸载UI
+loader.next()
+```
+
+**部署Iterator接口**
+
+```
+function* iterEntries(obj) {
+  let keys = Object.keys(obj);
+  for (let i=0; i < keys.length; i++) {
+    let key = keys[i];
+    yield [key, obj[key]];
+  }
+}
+
+let myObj = { foo: 3, bar: 7 };
+
+for (let [key, value] of iterEntries(myObj)) {
+  console.log(key, value);
+}
+
+// foo 3
+// bar 7
+```
+
