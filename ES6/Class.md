@@ -235,3 +235,69 @@ class IncreasingCounter {
 }
 ```
 
+### Object.getPrototypeOf()
+
+用来从子类上获取父类。
+
+```
+class Point { /* ... */ }
+
+class ColorPoint extends Point {
+  constructor() {
+  }
+}
+
+Object.getPrototypeOf(ColorPoint) === Point
+// true
+```
+
+### super关键字
+
+**1.作为函数使用**
+
+作为函数调用时，代表父类的构造函数，子类的构造函数必须在第一行执行一次super函数。
+
+super()只能用在子类的构造函数之中，用在其他地方就会报错。
+
+```
+class A {}
+
+class B extends A {
+  m() {
+    super(); // 报错
+  }
+}
+```
+
+**2.作为对象使用**
+
+作为对象使用时，在普通方法中指向父类的原型对象，在静态方法中指向父类。
+
+```
+class A {
+  constructor() {
+    this.x = 2; // 定义在父类实例上的方法或属性，无法通过super调用
+  }
+  // 没有显式地定义在this对象上，则定义在其原型上
+  p() {
+    return 2;
+  }
+}
+
+class B extends A {
+  constructor() {
+    super();
+    console.log(super.p());
+  }
+  get m() {
+      return super.x;
+  }
+}
+
+let b = new B(); // 2
+b.x // undefined
+```
+
+### 类的prototype和__proto__
+
+
