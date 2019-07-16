@@ -60,3 +60,22 @@ f()
 .then(v => console.log(v))
 // hello world
 ```
+
+await命令后面的异步操作，如果不存在继发关系，最好让它们同时触发，这样可以缩短程序执行的时间。
+
+```
+// before
+let foo = await getFoo();
+let bar = await getBar();
+
+// after
+
+// 写法一
+let [foo, bar] = await Promise.all([getFoo(), getBar()]);
+
+// 写法二
+let fooPromise = getFoo();
+let barPromise = getBar();
+let foo = await fooPromise;
+let bar = await barPromise;
+```
