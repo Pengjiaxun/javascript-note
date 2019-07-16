@@ -64,8 +64,8 @@ function* foo() {
   yield 2;
   yield 3;
   yield 4;
-  yield 5;
-  return 6; // 执行到这里的时候done为true
+  yield 5; // 执行到这里的时候done为true
+  return 6; // 不会被输出
 }
 
 for (let v of foo()) {
