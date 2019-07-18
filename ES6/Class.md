@@ -300,4 +300,24 @@ b.x // undefined
 
 ### 类的prototype和__proto__
 
+Class作为构造函数的语法糖，同时有`prototype`属性和`__proto__`属性，因此同时存在两条继承链：
 
+1. 子类的__proto__属性，表示构造函数的继承，总是指向父类。
+
+2. 子类prototype属性的__proto__属性，表示方法的继承，总是指向父类的prototype属性。
+
+```
+class A {
+}
+
+class B extends A {
+}
+
+B.__proto__ === A // true
+B.prototype.__proto__ === A.prototype // true
+```
+
+理解：
+
+1. 作为一个对象，子类（B）的原型（__proto__属性）是父类（A）；
+2. 作为一个构造函数，子类（B）的原型对象（prototype属性）是父类的原型对象（prototype属性）的实例。

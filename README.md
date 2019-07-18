@@ -15,8 +15,16 @@
 * [变量的解构赋值](ES6/变量的解构赋值.md)
 * [字符串的扩展](ES6/字符串的扩展.md)
 * [数值的扩展](ES6/数值的扩展.md)
+* [函数的扩展](ES6/函数的扩展.md)
+* [数组的扩展](ES6/数组的扩展.md)
+* [对象的扩展](ES6/对象的扩展.md)
+* [Symbol](ES6/Symbol.md)
 * [Set数据结构](ES6/Set数据结构.md)
 * [Map数据结构](ES6/Map数据结构.md)
+* [Promise对象](ES6/Promise对象.md)
+* [Generator函数](ES6/Generator函数.md)
+* [async函数](ES6/async函数.md)
+* [Class](ES6/Class.md)
 * [ES6编程风格](ES6/ES6编程风格.md)
 
 **设计模式**
